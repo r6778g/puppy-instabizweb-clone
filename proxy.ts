@@ -1,0 +1,17 @@
+import type { NextRequest } from 'next/server';
+import { createClient } from '@/utils/supabase/middleware';
+
+export async function proxy(request: NextRequest) {
+  const { supabase, response } = createClient(request);
+
+  // Calling getClaims allows Supabase to refresh an expired session cookie.
+  if (supabase) {
+    await supabase.auth.getClaims();
+  }
+
+  return response;
+}
+
+export const config = {
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'],
+};
