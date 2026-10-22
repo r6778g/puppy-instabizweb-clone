@@ -16,31 +16,43 @@ export const ContactPageContent: React.FC<{ puppies: Puppy[] }> = ({ puppies }) 
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) {
-      alert('Please provide your name and phone number so we can reach you!');
-      return;
-    }
-    const response = await fetch('/api/enquiries', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (!response.ok) {
-      const result = await response.json().catch(() => null);
-      alert(result?.error || 'We could not send your enquiry. Please try again.');
+      setSubmitError('Please provide your name and phone number so we can reach you.');
       return;
     }
 
-    // Keep the existing WhatsApp conversation as a convenient follow-up.
-    const text = encodeURIComponent(
-      `Hi TeddyPups! My name is ${formData.name}. Phone: ${formData.phone}. Email: ${formData.email || 'N/A'}. Area: ${formData.area || 'Dubai'}. Interested in: ${formData.puppyId || 'Any puppy'}. Message: ${formData.message || 'I would like more information.'}`
-    );
-    window.open(`https://wa.me/971541676733?text=${text}`, '_blank');
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError('');
+    try {
+      const response = await fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const result = await response.json().catch(() => null);
+        setSubmitError(result?.error || 'We could not send your enquiry. Please try again.');
+        return;
+      }
+
+      // Keep the existing WhatsApp conversation as a convenient follow-up.
+      const text = encodeURIComponent(
+        `Hi TeddyPups! My name is ${formData.name}. Phone: ${formData.phone}. Email: ${formData.email || 'N/A'}. Area: ${formData.area || 'Dubai'}. Interested in: ${formData.puppyId || 'Any puppy'}. Message: ${formData.message || 'I would like more information.'}`
+      );
+      window.open(`https://wa.me/971541676733?text=${text}`, '_blank');
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Enquiry submission failed:', error);
+      setSubmitError('We could not send your enquiry. Please try again or contact us on WhatsApp.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -187,10 +199,20 @@ export const ContactPageContent: React.FC<{ puppies: Puppy[] }> = ({ puppies }) 
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
 
+                  {submitError && (
+                    <p role="alert" className="mt-3 text-sm font-semibold text-red-700">
+                      {submitError}
+                    </p>
+                  )}
+
                   <div className="tp-letterform__sign">
                     <p className="font-scrawl">with love, a future puppy parent</p>
-                    <button type="submit" className="btn btn-primary disabled:opacity-70">
-                      Post my letter
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn btn-primary disabled:opacity-70"
+                    >
+                      {isSubmitting ? 'Sending…' : 'Post my letter'}
                     </button>
                   </div>
                 </form>

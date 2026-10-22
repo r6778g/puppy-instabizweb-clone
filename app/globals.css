@@ -388,7 +388,7 @@ html {
   font-size: clamp(1.45rem, 2vw, 2.1rem);
   line-height: 1.1;
   display: block;
-  color: var(--color-cocoa);
+  color: var(--color-toffee-deep);
   transition: color 0.25s ease;
 }
 
@@ -562,6 +562,24 @@ html {
   background-color: rgba(251, 227, 180, 0.9);
 }
 
+/* ===== HOW IT WORKS SECTION SPACING ===== */
+.tp-footer__copyright {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.tp-how-promise,
+.tp-how-delivery,
+.tp-how-why,
+.tp-how-care {
+  padding-block: 5rem;
+}
+
+.tp-how-promise__cards {
+  margin-top: 3.5rem;
+}
+
 /* ===== MEMORIES SECTION (Happy Families) ===== */
 .tp-memories__head {
   display: flex;
@@ -606,6 +624,16 @@ html {
   border: 2px solid rgba(212, 145, 91, 0.2);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   position: relative;
+}
+
+.tp-memories__quote {
+  position: relative;
+  z-index: 3;
+  display: block;
+  color: var(--color-cocoa);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 /* ===== TAPE DECORATION ===== */
@@ -771,4 +799,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
-

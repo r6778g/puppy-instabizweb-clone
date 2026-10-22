@@ -18,6 +18,23 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Contact enquiry email
+
+The contact form saves enquiries in Supabase and sends an email notification to
+`mohitpaladiya150@gmail.com` through Resend. To enable email delivery:
+
+1. Create a Resend API key and verify the sender domain or email address in Resend.
+2. Add these server-only variables to `.env.local` and to your deployment environment:
+
+   ```env
+   RESEND_API_KEY=re_your_resend_api_key
+   ENQUIRY_FROM_EMAIL=TeddyPups <enquiries@your-verified-domain.com>
+   ENQUIRY_TO_EMAIL=mohitpaladiya150@gmail.com
+   ```
+
+`ENQUIRY_TO_EMAIL` is optional; it defaults to `mohitpaladiya150@gmail.com`.
+Never expose the Resend API key with a `NEXT_PUBLIC_` prefix.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

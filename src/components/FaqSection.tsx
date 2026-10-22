@@ -50,15 +50,6 @@ export const FaqSection: React.FC<{ faqs: FaqItem[] }> = ({ faqs }) => {
               Everything you need to know about welcoming your new puppy home.
             </p>
           </div>
-
-          <div className="flex items-center gap-6">
-            <Link className="btn btn-ghost border-milk/30 text-milk hover:bg-milk/10" href="/#questions-title">
-              Read all questions
-            </Link>
-            <div className="hidden sm:block">
-              <PuppyMascot pose="sit" facing="left" className="size-28" />
-            </div>
-          </div>
         </div>
 
         {/* Accordion / FAQ List */}

@@ -131,7 +131,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Copyright */}
-        <div className="md:col-span-12 border-t border-milk/15 pt-6 mt-16 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-milk/60">
+        <div className="tp-footer__copyright border-t border-milk/15 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-milk/60">
           <div className="flex items-center gap-3">
             <Image alt="" width={36} height={36} src="/brand/logo.png" className="size-9 rounded-full" />
             <span>© 2026 TeddyPups U.A.E.</span>

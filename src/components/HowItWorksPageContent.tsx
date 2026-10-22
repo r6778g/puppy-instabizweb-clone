@@ -231,7 +231,7 @@ export const HowItWorksPageContent: React.FC = () => {
       </section>
 
       {/* SECTION 2: OUR PREMIUM PUPPY PROMISE */}
-      <section id="promise" aria-labelledby="promise-title" className="py-20 bg-milk border-y-2 border-toffee/15">
+      <section id="promise" aria-labelledby="promise-title" className="tp-how-promise bg-milk border-y-2 border-toffee/15">
         <div className="gutter mx-auto max-w-[110rem]">
           <div className="text-center max-w-2xl mx-auto">
             <p className="font-scrawl text-lg text-toffee-ink">puppy passport</p>
@@ -240,7 +240,7 @@ export const HowItWorksPageContent: React.FC = () => {
             </h2>
           </div>
 
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
+          <div className="tp-how-promise__cards grid gap-8 md:grid-cols-3">
             <div className="p-8 rounded-3xl bg-white border-2 border-toffee/20 shadow-sm hover:shadow-md transition">
               <ShieldCheck className="size-12 text-toffee-deep mb-4" />
               <h3 className="font-plush text-2xl text-toffee-deep">Hand-selected breeders</h3>
@@ -267,7 +267,7 @@ export const HowItWorksPageContent: React.FC = () => {
       </section>
 
       {/* SECTION 3: DELIVERY & COLLECTION */}
-      <section id="delivery" aria-labelledby="delivery-title" className="py-20 bg-[#fff9ee]">
+      <section id="delivery" aria-labelledby="delivery-title" className="tp-how-delivery bg-[#fff9ee]">
         <div className="gutter mx-auto max-w-[110rem]">
           <div className="max-w-3xl">
             <h2 id="delivery-title" className="font-plush text-big text-toffee-deep">
@@ -312,7 +312,7 @@ export const HowItWorksPageContent: React.FC = () => {
       </section>
 
       {/* SECTION 4: WHY CHOOSE US */}
-      <section id="why" aria-labelledby="why-title" className="py-20 bg-milk border-t-2 border-toffee/15">
+      <section id="why" aria-labelledby="why-title" className="tp-how-why bg-milk border-t-2 border-toffee/15">
         <div className="gutter mx-auto max-w-[110rem]">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-6">
@@ -363,7 +363,7 @@ export const HowItWorksPageContent: React.FC = () => {
       {/* SECTION 5: UNIQUE & HIGH QUALITY PUPPIES CTA */}
       <section
         aria-labelledby="care-title"
-        className="py-20 relative overflow-hidden"
+        className="tp-how-care relative overflow-hidden"
         style={{
           background: 'linear-gradient(180deg, #fffbf3 0%, #f6cc85 100%)',
         }}
